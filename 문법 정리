@@ -134,6 +134,7 @@
       * 본문의 both 값을 사용하면 float값으로 인해 img를 피해가는 것을 무시하고 자신의 위치를 고수 할 수 있다. 
       
   7. Box-sizing
+     - 테두리가 있는 경우 원하는 크기를 찾기 어려워 쓰는 속성 최근에는 이 값을 모든 엘리먼트의 지정하고 쓰는 경우가 늘고 있다.
      - 기본적으로 width의 값 지정은 content의 크기를 지정한다.
      
      - content-box
@@ -143,7 +144,101 @@
        
   8. FLEX
      - 레이아웃을 매우 효과적으로 표현할수 있는 속성
-     -  
+     - 부모에게 display 값을 flex을 주는 것 부터 시작이다
+     
+     - flex-direction : 정렬 방향을 바꿀 수 있다.
+       * 아무 값도 주지 않았을때는 기본적으로 row값을 가지고 있다.
+       * row-reverse 값을 줄 경우 행의 오른쪽으로 기준으로 정렬한다.
+       * column은 열을 기준으로 정렬하며 기본적으로 column 값을 가지고 있다.
+       * column-reverse 값을 줄 경우 반대로 정렬한다.
+       
+     - flex-basis : 방향에 해당하는 엘리먼트의 크기를 지정하는 것
+     
+     - flex-grow : 엘리먼트에게 남는 여백을 분배시켜 배치한다.
+       * 정수 값을 통하여 비율 분배가 가능하다. 
+       
+     - flex-shrink : 원래 컨테이너 보다 크기가 줄어들때 자신의 콘텐츠 값보다 basis값을 가지고 있는 엘리먼트가 
+                     고통 분담을 하는데 그 분담하는 비율을 지정하는 것 
+       * 정수 값을 통하여 비율 분배가 가능하다.
+     
+     - flex-wrap : item을 컨테이너의 크기의 따라 줄바꿈을 정하는 것
+       * 기본값은 nowrap으로 줄바꿈이 없는 상태
+       * wrap 값을 줄경우 item들의 크기가 컨테이너의 크기보다 클 경우 줄바꿈을 한다.
+       * wrap-reverse 값을 줄경우 줄바꿈이 위아래가 바뀌어 된다.
+       
+     - align-items (row 기준)
+       * stretch : 기본값, 컨테이너의 높이 값과 같아짐
+       * flex-start : 자기 컨테츠 만큼의 높이가 되고 컨테이너의 위쪽 start지점을 기준으로 정렬됨
+       * flex-end : 자기 컨테츠 만큼의 높이가 되고 컨테이너의 아래쪽 and지점을 기준으로 정렬됨
+       * center : 중앙을 기점으로 정렬
+       * baseline : 컨텐츠들의 밑줄을 중심으로 정렬
+       
+     - justify-content (colum 기준)
+       * flex-start : 왼쪽을 기준으로 item을 정렬
+       * flex-end : 오른쪽을 기준으로 item을 정렬
+       * center : 중앙을 기준으로 정렬
+       * space-between : 컨테이너의 끝을 기점으로  컨텐츠들의 사이 공간이 일정한 간격을 가지게 하는 것
+       * space-around : 컨테이너의 끝과  컨텐츠들의 사이 공간이 일정한 간격을 가지게 되는것
+       
+     - align-content : 컨텐츠들의 한행씩을 기준으로 간격을 가지게 하는 것
+     
+     - properties for the flex items
+       * align-self : item들중 특정 item을 정렬시키는 것
+       * .item {flex : flex-grow [fkex-shrink] [flex-basis];}
+         # 이런식으로 한번의 값을 부여할 수 있다.
+       * order : item의 순서를 바꿀때 사용
+         # 정수를 사용하여 순서를 매길 수 있다.
+     
+  9. media query
+      - max-width의 속성으로 값을 주어 그 값보다 작아질때 효과를 주는 것
+       (캐스캐이팅 때문에 뒤에 오는 코드가 우선순위를 가지기 때문에 크기순으로 코드를 작성해야 한다.)
+      - min-width의 속성으로 값을 주어 그 값보다 커질때 효과를 주는 것
+      - <meta name ="viewport" content = " width = device-width, initial = 1.0 ">
+        라는 코드를 적용시켜야한다.
+  10. multi column
+      - column-count : 정수를 사용하여 문단을 개수로 나눌 수 있다.
+      - column-width : 크기를 지정하여 문단이 자동적으로 나눠진다.
+        * count 와 width를 동시에 쓸경우 크기를 키운다고 count의 준 값보다 많아지진 않지만 크기를 줄일경우
+          width의 값에 따라서 개수가 줄어든다.
+      - column-gap : 문단사이의 간격을 설정할 수 있다. 
+      - column-rule-style : 문단사이를 여러 디자인의 선을 이용하여 나눌 수 있다.(solid, dashed 등등)
+      - column-rule-width : 선의 크기를 지정할 수 있다.
+      - column-rule-color : 선의 색상을 지정할 수 있다.
+      - column-span : column을 무시하고 위치 시킬 수 있다.
+      
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
+ -- 그래픽 --
  
+ 1. background(배경)
+   - background-color : 배경색 지정 (불투명이 석여있는 이미지와 같이 사용가능)
+   - background-image : 이미지를 삽입 (url()를 사용)
+   - background-repeat : 이미지의 반복정도를 설정할 수 있다.
+     * repeat : 여백을 채울때까지 반복
+     * no-repeat : 반복하지 않음
+     * repeat-x : x축만 반복
+     * repeat-y : y축만 반복
+   - background-attachment : 스크롤을 내릴때 배경이 움직이게하냐 고정하냐를 설정가능
+     * scroll : 스크롤을 따라 배경이 움직임 (기본값)
+     * fixed : 스크롤이 내려가도 자기위치 고정 
+   - background-size : 이미지의 크기를 지정
+     * contain : 이미지가 크기에 딱맞게 
+     * cover : 이미지가 화면 전체에 맞게
+   - background-position : 오프셋 값을 이용하여 배치를 조정할 수 있다.
+   
+   축약형 : background : {color url repeat attachment position;}
+   
+ 2. filter (text에도 적용가능)
+   - grayscale : 흑백으로 만듬 %를 통하여 조절 가능 
+     * transition을 사용하여 적용되는 시간을 지정하여 부드럽게 만들 수 있다.(transition : all 1s;)
+   - blur : 흐림 정도를 조절가능 
  
+ 3. blend(혼합하다)
+   - background-blend-mode : 백그라운드와 백그라운드의 blend(hue, saturation 등등)
+   - mix-blend-mode : 컨텐트와 백그라운드 사이의 blend
+   
+ 4. Transform : 엘리먼트의 크기, 위치, 모양을 변경하는 속성(참고 : https://codepen.io/vineethtrv/pen/XKKEgM)
+   
+   
+   
+     
