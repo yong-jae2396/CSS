@@ -238,7 +238,16 @@
    - mix-blend-mode : 컨텐트와 백그라운드 사이의 blend
    
  4. Transform : 엘리먼트의 크기, 위치, 모양을 변경하는 속성(참고 : https://codepen.io/vineethtrv/pen/XKKEgM)
-   
+    - inline-block, block일때만 작동한다.
+ 5. SVG (따로 공부해보기(벡터 방식 그리기))
+ 
+ 
+ -- 모션그래픽 --  
+ 1. transition
+    - porperty : 장면효과의 대상
+    - duration : 장면전환의 걸리는 시간 지정
+    - delay : 장면효과가 시간차를 두고 시작하게 지정
+    - timing-function : 장면효과가 적용될때의 형태 속도등을 지정(좀더 동적인 효과를 얻을 수 있다. * )
    
    
      
